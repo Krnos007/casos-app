@@ -1,0 +1,54 @@
+# Gradle
+.gradle/
+build/
+gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Android
+*.iml
+*.class
+*.apk
+*.dex
+*.log
+*.lock
+*.tmp
+*.properties
+local.properties
+.idea/
+.DS_Store
+*.swp
+*.swo
+*v/
+.vscode/
+.externalNativeBuild/
+
+# Kotlin
+*.kotlin_build
+*/build/
+*/src/**
+
+# Keystore
+*.jks
+*.keystore
+*.key
+
+# Environment
+.env
+.env.local
+
+# Backup
+*~
+*.bak
+*.orig
+*.rej
+
+# Logs
+logs/
+*.log
+
+# OS
+Thumbs.db
+Desktop.ini
+
+# Sensitive
+gradle.properties
