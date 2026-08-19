@@ -10,43 +10,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout del código
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2. Configurar Java (CORREGIDO: v4 -> v5)
       - name: Setup JDK
         uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
           java-version: '17'
 
-      # 3. Configurar Android SDK
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      # 4. Aceptar licencias de SDK
       - name: Accept SDK licenses
         run: yes | sdkmanager --licenses
 
-      # 5. Instalar componentes de SDK
       - name: Install SDK components
         run: |
           sdkmanager "platform-tools"
           sdkmanager "platforms;android-33"
           sdkmanager "build-tools;33.0.0"
 
-      # 6. Dar permisos de ejecución a gradlew
       - name: Make gradlew executable
-        run: |
-          chmod +x gradlew
-          ls -la gradlew
+        run: chmod +x gradlew
 
-      # 7. Compilar APK
       - name: Build APK
         run: ./gradlew assembleDebug --stacktrace
 
-      # 8. Subir el APK como artefacto
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
