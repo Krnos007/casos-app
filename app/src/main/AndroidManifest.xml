@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.kronosempire.casos">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Permisos -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -16,7 +15,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.CASOS"
+        android:theme="@style/Theme.CasosApp"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
@@ -24,7 +23,7 @@
         <activity
             android:name=".ui.main.SplashActivity"
             android:exported="true"
-            android:theme="@style/Theme.CASOS.Splash">
+            android:theme="@style/Theme.CasosApp.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -40,53 +39,53 @@
         <!-- Add Registro -->
         <activity
             android:name=".ui.add.AddRegistroActivity"
-            android:parentActivityName=".ui.main.MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".ui.main.MainActivity" />
 
         <!-- Detail -->
         <activity
             android:name=".ui.detail.DetailActivity"
-            android:parentActivityName=".ui.main.MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".ui.main.MainActivity" />
 
         <!-- Search -->
         <activity
             android:name=".ui.search.SearchActivity"
-            android:parentActivityName=".ui.main.MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".ui.main.MainActivity" />
 
         <!-- Cierre -->
         <activity
             android:name=".ui.cierre.CierreActivity"
-            android:parentActivityName=".ui.main.MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".ui.main.MainActivity" />
 
         <!-- Security -->
         <activity
             android:name=".ui.security.PinActivity"
             android:exported="false"
-            android:theme="@style/Theme.CASOS.NoActionBar" />
+            android:theme="@style/Theme.CasosApp.NoActionBar" />
 
         <activity
             android:name=".ui.security.SetupSecurityActivity"
-            android:parentActivityName=".ui.main.MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".ui.main.MainActivity" />
 
         <activity
             android:name=".ui.security.TwoFactorActivity"
             android:exported="false"
-            android:theme="@style/Theme.CASOS.NoActionBar" />
+            android:theme="@style/Theme.CasosApp.NoActionBar" />
 
         <activity
             android:name=".ui.security.RecoveryActivity"
-            android:parentActivityName=".ui.main.MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".ui.main.MainActivity" />
 
         <!-- Settings -->
         <activity
             android:name=".ui.settings.SettingsActivity"
-            android:parentActivityName=".ui.main.MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".ui.main.MainActivity" />
 
     </application>
 
