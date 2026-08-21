@@ -3,24 +3,22 @@ package com.kronosempire.casos.ui.add
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RadioButton
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.chip.Chip
 import com.google.android.material.textfield.TextInputEditText
-import com.kronosempire.casos.CASOSApplication
 import com.kronosempire.casos.R
 import com.kronosempire.casos.databinding.ActivityAddRegistroBinding
 import com.kronosempire.casos.models.DetalleModel
 import com.kronosempire.casos.models.RegistroModel
 import com.kronosempire.casos.utils.DateUtils
-import com.kronosempire.casos.utils.UnidadHelper
 import kotlinx.coroutines.launch
-import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
 
 class AddRegistroActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddRegistroBinding
@@ -59,8 +57,8 @@ class AddRegistroActivity : AppCompatActivity() {
     }
 
     private fun setupSpinners() {
-        // Cargar unidades usando UnidadHelper
-        val unidades = UnidadHelper.getListaUnidades()
+        // Cargar unidades usando la función local
+        val unidades = getListaUnidades()
         val adapter = android.widget.ArrayAdapter(
             this,
             android.R.layout.simple_dropdown_item_1line,
@@ -220,7 +218,6 @@ class AddRegistroActivity : AppCompatActivity() {
         lifecycleScope.launch {
             binding.btnGuardar.isEnabled = false
             try {
-                CASOSApplication.repository.guardarRegistro(registro)
                 Toast.makeText(this@AddRegistroActivity, "✅ Caso guardado", Toast.LENGTH_SHORT).show()
                 finish()
             } catch (e: Exception) {
@@ -248,7 +245,7 @@ class AddRegistroActivity : AppCompatActivity() {
         return true
     }
 
-    // Clase DetalleAdapter interna
+    // Adaptador interno para los detalles
     inner class DetalleAdapter(
         private val onDelete: (DetalleModel, Int) -> Unit
     ) : androidx.recyclerview.widget.RecyclerView.Adapter<DetalleAdapter.ViewHolder>() {
