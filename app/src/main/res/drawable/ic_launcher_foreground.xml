@@ -5,8 +5,9 @@
     android:viewportWidth="108"
     android:viewportHeight="108">
 
+    <!-- Letra "C" de CASOS -->
     <path
-        android:fillColor="@color/white"
+        android:fillColor="@android:color/white"
         android:pathData="M31,63
             L31,63
             C31,65.209 32.791,67 35,67
@@ -19,7 +20,7 @@
             L31,63Z" />
 
     <path
-        android:fillColor="@color/white"
+        android:fillColor="@android:color/white"
         android:pathData="M54,33
             C48.477,33 44,37.477 44,43
             C44,48.523 48.477,53 54,53
