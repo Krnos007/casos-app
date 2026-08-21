@@ -19,22 +19,11 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Accept Android SDK licenses
-        run: |
-          export ANDROID_SDK_ROOT=/usr/local/lib/android/sdk
-          yes | $ANDROID_SDK_ROOT/tools/bin/sdkmanager --licenses || true
-          yes | $ANDROID_SDK_ROOT/tools/bin/sdkmanager --licenses --no_https || true
-
-      - name: Install SDK components
-        run: |
-          export ANDROID_SDK_ROOT=/usr/local/lib/android/sdk
-          $ANDROID_SDK_ROOT/tools/bin/sdkmanager "platform-tools" "platforms;android-33" "build-tools;33.0.0"
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
 
       - name: Make gradlew executable
         run: chmod +x gradlew
-
-      - name: Clean project
-        run: ./gradlew clean
 
       - name: Build APK
         run: ./gradlew assembleDebug --stacktrace
