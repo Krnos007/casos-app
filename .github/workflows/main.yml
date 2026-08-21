@@ -19,23 +19,16 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
-        with:
-          accept-licenses: true
-
-      - name: Accept SDK licenses manually
+      - name: Accept Android SDK licenses
         run: |
-          yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses || true
-          yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses --no_https || true
-          export JAVA_OPTS="-Djava.awt.headless=true"
-          yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses || true
+          export ANDROID_SDK_ROOT=/usr/local/lib/android/sdk
+          yes | $ANDROID_SDK_ROOT/tools/bin/sdkmanager --licenses || true
+          yes | $ANDROID_SDK_ROOT/tools/bin/sdkmanager --licenses --no_https || true
 
       - name: Install SDK components
         run: |
-          yes | $ANDROID_HOME/tools/bin/sdkmanager "platform-tools"
-          yes | $ANDROID_HOME/tools/bin/sdkmanager "platforms;android-33"
-          yes | $ANDROID_HOME/tools/bin/sdkmanager "build-tools;33.0.0"
+          export ANDROID_SDK_ROOT=/usr/local/lib/android/sdk
+          $ANDROID_SDK_ROOT/tools/bin/sdkmanager "platform-tools" "platforms;android-33" "build-tools;33.0.0"
 
       - name: Make gradlew executable
         run: chmod +x gradlew
